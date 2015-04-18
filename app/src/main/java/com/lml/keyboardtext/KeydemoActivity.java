@@ -1,7 +1,5 @@
 package com.lml.keyboardtext;
 
-import java.lang.reflect.Method;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +10,8 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.WindowManager;
 import android.widget.EditText;
+
+import java.lang.reflect.Method;
 
 public class KeydemoActivity extends Activity {
 	private Context ctx;
@@ -36,7 +36,7 @@ public class KeydemoActivity extends Activity {
 				Class<EditText> cls = EditText.class;
 				Method setShowSoftInputOnFocus;
 //				setShowSoftInputOnFocus = cls.getMethod("setShowSoftInputOnFocus", boolean.class);
-				setShowSoftInputOnFocus = cls.getMethod("setSoftInputShownOnFocus", boolean.class);//是该方法而非上面的方法
+				setShowSoftInputOnFocus = cls.getMethod("setSoftInputShownOnFocus", boolean.class);//
 				setShowSoftInputOnFocus.setAccessible(false);
 				setShowSoftInputOnFocus.invoke(edit, false);
 			} catch (Exception e) {

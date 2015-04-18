@@ -1,7 +1,5 @@
 package com.lml.keyboardtext;
 
-import java.util.List;
-
 import android.app.Activity;
 import android.content.Context;
 import android.inputmethodservice.Keyboard;
@@ -12,10 +10,12 @@ import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
 
+import java.util.List;
+
 public class KeyboardUtil {
         private KeyboardView keyboardView;  
         private Keyboard k1; 
-        public boolean isupper = false;// ÊÇ·ñ´óÐ´  
+        public boolean isupper = false;//æ˜¯å¦åˆ‡æ¢åˆ°å¤§å†™
         boolean isShow=false;
         private EditText ed;  
    
@@ -62,15 +62,15 @@ public class KeyboardUtil {
                 public void onKey(int primaryCode, int[] keyCodes) {  
                         Editable editable = ed.getText();  
                         int start = ed.getSelectionStart();  
-                        if (primaryCode == Keyboard.KEYCODE_CANCEL) {// Íê³É  
+                        if (primaryCode == Keyboard.KEYCODE_CANCEL) {// ï¿½ï¿½ï¿½  
                                 hideKeyboard();  
-                        } else if (primaryCode == Keyboard.KEYCODE_DELETE) {// »ØÍË  
+                        } else if (primaryCode == Keyboard.KEYCODE_DELETE) {// ï¿½ï¿½ï¿½ï¿½  
                                 if (editable != null && editable.length() > 0) {  
                                         if (start > 0) {  
                                                 editable.delete(start - 1, start);  
                                         }  
                                 }  
-                        } else if (primaryCode == Keyboard.KEYCODE_SHIFT) {// ´óÐ¡Ð´ÇÐ»»  
+                        } else if (primaryCode == Keyboard.KEYCODE_SHIFT) {// ï¿½ï¿½Ð¡Ð´ï¿½Ð»ï¿½  
                                 changeKey();  
                                 keyboardView.setKeyboard(k1);  
                         } else if (primaryCode == 57419) { // go left  
@@ -88,28 +88,28 @@ public class KeyboardUtil {
         };  
            
         /** 
-         * ¼üÅÌ´óÐ¡Ð´ÇÐ»» 
+         * ï¿½ï¿½ï¿½Ì´ï¿½Ð¡Ð´ï¿½Ð»ï¿½ 
          */  
         private void changeKey() {  
                 List<Key> keylist = k1.getKeys();  
-                if (isupper) {//´óÐ´ÇÐ»»Ð¡Ð´  
+                if (isupper) {//ï¿½ï¿½Ð´ï¿½Ð»ï¿½Ð¡Ð´  
                         isupper = false;  
                         for(Key key:keylist){  
                                 if (key.label!=null && isword(key.label.toString())) {  
                                         key.label = key.label.toString().toLowerCase();  
                                         key.codes[0] = key.codes[0]+32;  
                                 }else if(key.label.toString().equals("Ð¡Ð´")){
-                                	key.label="´óÐ´";
+                                	key.label="ï¿½ï¿½Ð´";
                                 }
                                 
                         }  
-                } else {//Ð¡Ð´ÇÐ»»´óÐ´  
+                } else {//Ð¡Ð´ï¿½Ð»ï¿½ï¿½ï¿½Ð´  
                         isupper = true;  
                         for(Key key:keylist){  
                                 if (key.label!=null && isword(key.label.toString())) {  
                                         key.label = key.label.toString().toUpperCase();  
                                         key.codes[0] = key.codes[0]-32;  
-                                }  else if(key.label.toString().equals("´óÐ´")){
+                                }  else if(key.label.toString().equals("ï¿½ï¿½Ð´")){
                                 	key.label="Ð¡Ð´";
                                 }
                         }  

@@ -1,0 +1,2 @@
+/Users/xiayangyang/study/demo/KeyBoardText/app/build/intermediates/classes/debug
+/Users/xiayangyang/study/demo/KeyBoardText/app/build/intermediates/pre-dexed/debug/support-v4-18.0.0-7ad763bf18d87d4e359a158bbde8d6098c2de102.jar
